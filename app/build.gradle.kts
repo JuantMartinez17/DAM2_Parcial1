@@ -16,6 +16,10 @@ android {
     namespace = "com.example.dam2_parcial1"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "com.example.dam2_parcial1"
         minSdk = 26
