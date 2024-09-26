@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Definir el color de fondo de la tarjeta -->
+    <solid android:color="#FFFFFF" />
+
+    <!-- Agregar bordes redondeados -->
+    <corners android:radius="16dp" />
+
+    <!-- Definir el color del borde y su grosor -->
+    <stroke
+        android:width="2dp"
+        android:color="#DDDDDD" />
+
+    <!-- Definir un margen interno para el contenido de la tarjeta -->
+    <padding
+        android:left="8dp"
+        android:top="8dp"
+        android:right="8dp"
+        android:bottom="8dp" />
+
+</shape>

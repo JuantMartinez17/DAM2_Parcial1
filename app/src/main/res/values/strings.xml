@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">DAM2_Parcial1</string>
+    <string name="appTitle">MyDietPal</string>
+    <string name="vegetarian_ivDescription">Vegetarian logo</string>
+    <string name="tv_vegetarian">Vegetarian diet</string>
+    <string name="vegan_ivDescription">Vegan diet logo</string>
+    <string name="tv_vegan">Vegan diet</string>
+    <string name="glutenFree_ivDescription">Gluten free diet logo</string>
+    <string name="tv_glutenFree">Gluten free diet</string>
 </resources>
