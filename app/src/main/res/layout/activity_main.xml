@@ -92,7 +92,7 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/glutenFree_image"
+                android:src="@drawable/glutenfree_image"
                 android:contentDescription="@string/glutenFree_ivDescription"
                 android:scaleType="centerCrop" />
 
