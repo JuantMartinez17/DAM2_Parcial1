@@ -9,4 +9,9 @@
     <string name="tv_glutenFree">Gluten free diet</string>
     <string name="ivItem_description">Descripcion de la imagen mostrada</string>
     <string name="tv_itemTitle">Item Title</string>
+    <string name="caloriesText">Calories: 0</string>
+    <string name="carbsText">Carbs: 0g</string>
+    <string name="fatText">Fat: 0g</string>
+    <string name="proteinText">Protein: 0g</string>
+    <string name="go_back">Go Back</string>
 </resources>

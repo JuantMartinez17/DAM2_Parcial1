@@ -1,20 +1,48 @@
 package com.example.dam2_parcial1
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.dam2_parcial1.databinding.ActivityRecipeDetailBinding
+import retrofit2.Callback
+import com.example.dam2_parcial1.model.RecipeDetail
+import retrofit2.Call
+import retrofit2.Response
+
 
 class RecipeDetailActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRecipeDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_recipe_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityRecipeDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val apiKey = BuildConfig.MY_API_KEY
+        val recipeId = intent.getIntExtra("RECIPE_ID", -1)
+        if (recipeId != -1){
+            getRecipeDetails(recipeId, apiKey)
         }
+
+    }
+
+    private fun getRecipeDetails(recipeId: Int, apiKey: String) {
+        val apiService = RetrofitClient.apiService
+        apiService.getRecipeDetails(recipeId, apiKey).enqueue(object : Callback<RecipeDetail>{
+            override fun onResponse(call: Call<RecipeDetail>, response: Response<RecipeDetail>) {
+                if (response.isSuccessful){
+                    val recipeDetail = response.body()
+                    recipeDetail?.let{
+                        binding.tvCalories.text = "Calories: ${it.calories}"
+                        binding.tvCarbs.text = "Carbs: ${it.carbs}"
+                        binding.tvFat.text = "Fat: ${it.fat}"
+                        binding.tvProtein.text = "Protein: ${it.protein}"
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<RecipeDetail>, t: Throwable) {
+                Log.e("ERROR: ", "Error al obtener el detalle de la receta")
+            }
+        })
     }
 }
