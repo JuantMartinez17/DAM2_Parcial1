@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var queryAdapter: QueryAdapter
     private val apiService = RetrofitClient.apiService
-    private val job = Job()
-    private val coroutineScope = CoroutineScope(Dispatchers.Main + job)
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,10 +66,5 @@ class MainActivity : AppCompatActivity() {
         withContext(Dispatchers.Main) {
             queryAdapter.updateResults(response.results)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        job.cancel()
     }
 }
