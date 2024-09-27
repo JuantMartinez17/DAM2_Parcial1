@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dam2_parcial1.R
 import com.example.dam2_parcial1.model.Query
 
-class QueryAdapter (var results: List<Query>): RecyclerView.Adapter<QueryViewHolder>(){
+class QueryAdapter (var results: List<Query>, private var onItemClick:(Query)->Unit): RecyclerView.Adapter<QueryViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QueryViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context).inflate(R.layout.card_item, parent, false)
         return QueryViewHolder(layoutInflater)
@@ -19,6 +19,10 @@ class QueryAdapter (var results: List<Query>): RecyclerView.Adapter<QueryViewHol
     override fun onBindViewHolder(holder: QueryViewHolder, position: Int) {
         val item = results[position]
         holder.bind(item)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(item)
+        }
     }
 
     fun updateResults(newResults: List<Query>) {

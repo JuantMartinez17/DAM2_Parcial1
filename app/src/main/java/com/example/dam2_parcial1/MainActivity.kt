@@ -1,5 +1,6 @@
 package com.example.dam2_parcial1
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.SearchView
@@ -7,6 +8,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.RecyclerListener
 import com.example.dam2_parcial1.RetrofitClient.apiService
 import com.example.dam2_parcial1.adapter.QueryAdapter
 import com.example.dam2_parcial1.databinding.ActivityMainBinding
@@ -32,10 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val apiKey = BuildConfig.MY_API_KEY
-
         binding.rvResults.layoutManager = LinearLayoutManager(this)
-        queryAdapter = QueryAdapter(emptyList())
-        binding.rvResults.adapter = queryAdapter
 
         binding.svIngredient.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -49,6 +48,14 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        queryAdapter = QueryAdapter(emptyList()) { query ->
+            val intent = Intent(this, RecipeDetailActivity::class.java)
+            intent.putExtra("RECIPE_ID", query.id)
+            startActivity(intent)
+        }
+        binding.rvResults.adapter = queryAdapter
+
     }
 
     private fun searchRecipes(ingredient: String, apiKey: String) {
