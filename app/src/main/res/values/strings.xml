@@ -7,4 +7,6 @@
     <string name="tv_vegan">Vegan diet</string>
     <string name="glutenFree_ivDescription">Gluten free diet logo</string>
     <string name="tv_glutenFree">Gluten free diet</string>
+    <string name="ivItem_description">Descripcion de la imagen mostrada</string>
+    <string name="tv_itemTitle">Item Title</string>
 </resources>
