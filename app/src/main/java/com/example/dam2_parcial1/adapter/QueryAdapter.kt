@@ -21,4 +21,9 @@ class QueryAdapter (var results: List<Query>): RecyclerView.Adapter<QueryViewHol
         holder.bind(item)
     }
 
+    fun updateResults(newResults: List<Query>) {
+        results = newResults
+        notifyDataSetChanged()
+    }
+
 }

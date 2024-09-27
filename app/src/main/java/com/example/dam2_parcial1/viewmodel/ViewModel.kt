@@ -14,7 +14,7 @@ class ViewModel: ViewModel() {
     fun getResults(apiKey: String, query: String){
         viewModelScope.launch {
             try {
-                val response = RetrofitClient.apiService.searchRecipes(query, 10, apiKey)
+                val response = RetrofitClient.apiService.searchRecipes(query, apiKey)
                 results.postValue(response.results)
             }catch (e: Exception){
                 errorMessage.postValue("Error: ${e.message}")

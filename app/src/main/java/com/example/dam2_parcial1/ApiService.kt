@@ -8,7 +8,6 @@ interface ApiService {
     @GET("recipes/complexSearch")
     suspend fun searchRecipes(
         @Query("query") ingredient: String,  // Ingredient the user wants
-        @Query("number") number: Int = 10,  // Number of results expected
         @Query("apiKey") apiKey: String  // Spoonacular ApiKey
     ): QueryResponse
 }

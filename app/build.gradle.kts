@@ -16,10 +16,6 @@ android {
     namespace = "com.example.dam2_parcial1"
     compileSdk = 34
 
-    buildFeatures {
-        buildConfig = true
-    }
-
     defaultConfig {
         applicationId = "com.example.dam2_parcial1"
         minSdk = 26
@@ -32,7 +28,7 @@ android {
         buildConfigField(
             "String",
             "MY_API_KEY",
-            apikeyProperties.getProperty("API_KEY") ?: "\"default_key\""
+            apikeyProperties.getProperty("MY_API_KEY") ?: "\"default_key\""
         )
     }
 
@@ -55,6 +51,9 @@ android {
 
     viewBinding{
         enable = true
+    }
+    buildFeatures {
+        buildConfig = true  // Asegúrate de tener esta línea en el archivo build.gradle
     }
 }
 
